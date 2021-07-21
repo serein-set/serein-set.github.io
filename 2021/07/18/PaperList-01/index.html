@@ -240,7 +240,8 @@
 <li><strong>DOI：10.1109/ICC40277.2020.9148862</strong></li>
 </ul>
 <blockquote>
-<h5 id="研究主题-1"><a href="#研究主题-1" class="headerlink" title="研究主题"></a>研究主题</h5></blockquote>
+<p>#####研究主题</p>
+</blockquote>
 <ul>
 <li>本文针对FedAvg算法带来的大量的通讯开销和边缘计算提出了一种新的结构（客户端-边缘-云端分层的联邦学习系统）以及HierFAVG算法</li>
 <li>创新点<ul>
@@ -272,7 +273,8 @@
 <li>通过允许频繁的本地更新，可以实现更好的延迟-能量权衡吗?</li>
 </ol>
 </blockquote>
-<h4 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a><code>系统架构</code></h4><p><img src="https://gitee.com/serein-set/pic/raw/master/20210718204716.png" srcset="/img/loading.gif" lazyload alt="image-20210718204716397"></p>
+<p>####<code>系统架构</code></p>
+<p><img src="https://gitee.com/serein-set/pic/raw/master/20210718204716.png" srcset="/img/loading.gif" lazyload alt="image-20210718204716397"></p>
 <ul>
 <li><p>与cloud-based相比，client-edge-cloud优势：减少与云的昂贵通信，并辅以高效的客户端边缘更新，从而显著减少运行时间和本地迭代的数量</p>
 </li>
@@ -280,12 +282,12 @@
 </li>
 </ul>
 <blockquote>
-<h5 id="hierFAVG算法-—Client-Edge-Cloud-分层联邦学习"><a href="#hierFAVG算法-—Client-Edge-Cloud-分层联邦学习" class="headerlink" title="hierFAVG算法 —Client-Edge-Cloud 分层联邦学习"></a>hierFAVG算法 —Client-Edge-Cloud 分层联邦学习</h5></blockquote>
+<h5 id="hierFAVG算法-–Client-Edge-Cloud-分层联邦学习"><a href="#hierFAVG算法-–Client-Edge-Cloud-分层联邦学习" class="headerlink" title="hierFAVG算法 –Client-Edge-Cloud 分层联邦学习"></a>hierFAVG算法 –Client-Edge-Cloud 分层联邦学习</h5></blockquote>
 <ul>
 <li><p>关键步骤：</p>
 <ul>
-<li>局部聚合—边缘—每个边缘间隔的末端：在每个client的每κ1次本地更新后，每个边缘服务器都会聚合其clients的模型。</li>
-<li>全局聚合—云—每个云间隔的末端：然后在每κ2个边缘模型聚合后，云服务器会聚合所有边缘服务器的模型，这意味着与云的通信每 κ1κ2 个本地更新发生一次</li>
+<li>局部聚合–边缘–每个边缘间隔的末端：在每个client的每κ1次本地更新后，每个边缘服务器都会聚合其clients的模型。</li>
+<li>全局聚合–云–每个云间隔的末端：然后在每κ2个边缘模型聚合后，云服务器会聚合所有边缘服务器的模型，这意味着与云的通信每 κ1κ2 个本地更新发生一次</li>
 </ul>
 </li>
 <li><p>算法</p>
@@ -303,12 +305,15 @@
 <ol>
 <li><p>系统设置与假设</p>
 <ul>
-<li>假设每个边缘服务器用相同数量的训练数据授权给相同数量的客户。我们拥有50个客户端、5个边缘服务器和一个云服务器的分层FL系统</li>
-<li>任务：图像分类任务—CNN </li>
-<li>梯度下降法：批量大小为20的小批量随机梯度下降(SGD)</li>
+<li><p>假设每个边缘服务器用相同数量的训练数据授权给相同数量的客户。我们拥有50个客户端、5个边缘服务器和一个云服务器的分层FL系统</p>
+</li>
+<li><p>任务：图像分类任务–CNN </p>
+</li>
+<li><p>梯度下降法：批量大小为20的小批量随机梯度下降(SGD)</p>
+</li>
 <li><p>数据集：标准数据集MNIST和CIFAR-10</p>
 <ul>
-<li><p>MNIST：— 21840个可训练参数</p>
+<li><p>MNIST：– 21840个可训练参数</p>
 <ul>
 <li>初始学习率为0.01，并以0.995的速率随每个epoch衰减</li>
 <li>以下两种MNIST非iid情况:<ol>
@@ -318,7 +323,7 @@
 </li>
 </ul>
 </li>
-<li><p>CIFAR-10：— 5852170个参数 — 3个卷积块</p>
+<li><p>CIFAR-10：– 5852170个参数 – 3个卷积块</p>
 <ul>
 <li>初始学习率为0.1，并以0.992的速率随每个epoch衰减</li>
 </ul>
@@ -328,7 +333,7 @@
 </ul>
 </li>
 </ol>
-<ol>
+<ol start="2">
 <li><p>结果</p>
 <p><img src="https://gitee.com/serein-set/pic/raw/master/20210719164003.png" srcset="/img/loading.gif" lazyload alt="image-20210719164003856"></p>
 <ul>
