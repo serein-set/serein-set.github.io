@@ -1,0 +1,614 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="热爱生活，记录学习点滴">
+  <meta name="author" content="Serein">
+  <meta name="keywords" content="Go，Python，Blockchain, Edge computing，IoT">
+  
+  <title>Federated Transfer Learning for IIoT Devices With Low Computing Power Based on Blockchain and Edge Computing - SereinDemo</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Serein's Blog</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Federated Transfer Learning for IIoT Devices With Low Computing Power Based on Blockchain and Edge Computing">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-20 00:00" pubdate>
+        2021年7月20日 凌晨
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      21
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Federated Transfer Learning for IIoT Devices With Low Computing Power Based on Blockchain and Edge Computing</h1>
+            
+            <div class="markdown-body">
+              <h4 id="研究主题"><a href="#研究主题" class="headerlink" title="研究主题"></a><code>研究主题</code></h4><ul>
+<li><strong>DOI：10.1109/ACCESS.2021.3095078</strong></li>
+</ul>
+<h5 id="1-研究主题"><a href="#1-研究主题" class="headerlink" title="1. 研究主题"></a>1. 研究主题</h5><ul>
+<li><p>需要解决的问题：针对工业物联网设备太低而无法完成联邦学习中模型更新任务的问题。</p>
+</li>
+<li><p>创新点</p>
+<ul>
+<li>针对许多计算能力低下的设备不适合在IIoT中进行联合学习的问题，本文提出了一种将低计算能力设备的数据提交给工厂内网的边缘计算服务器进行训练的策略。</li>
+<li>针对数据传输过程中存在的数据安全问题，本文采用区块链来保护数据的安全</li>
+<li>在工业物联网环境下将联邦学习和迁移学习相结合，以提高训练模型的泛化程度</li>
+</ul>
+</li>
+</ul>
+<h5 id="2-关键技术"><a href="#2-关键技术" class="headerlink" title="2. 关键技术"></a>2. 关键技术</h5><ul>
+<li><p>联邦学习— 保护用户隐私</p>
+</li>
+<li><p>边缘计算—解决设备计算能力不足的问题</p>
+</li>
+<li>区块链—保证数据传输的安全性，进行设备认证</li>
+<li>联邦迁移学习—提高训练模型的效率和通用性</li>
+</ul>
+<h5 id="3-相关问题"><a href="#3-相关问题" class="headerlink" title="3. 相关问题"></a>3. 相关问题</h5><ol>
+<li>迁移学习的准确率能再提高吗？</li>
+<li>数据传输的加解密消耗过多资源问题怎么解决？</li>
+</ol>
+<h4 id="系统架构"><a href="#系统架构" class="headerlink" title="系统架构"></a><code>系统架构</code></h4><ul>
+<li>基于区块链的设备身份认证：提出一种工业物联网中的安全传输方案，采用区块链去中心化架构，连续记录进出节点的传输数据，确保数据的安全性。该方案可实现工业物联网设备的身份认证和数据的安全传输，为联邦学习和边缘计算中设备间的数据共享创造条件。</li>
+</ul>
+<ul>
+<li><p>边缘计算：本文提出将物联网中低计算能力设备的数据传输到边缘计算设备上进行训练和更新。该方案提高了联合学习的效率，为IIoT中的联合学习创造了良好的条件。</p>
+</li>
+<li><p>联邦迁移学习：针对工业物联网中性能较低的设备提出了一种合适的联邦迁移学习方法</p>
+</li>
+</ul>
+<h5 id="1-系统设计"><a href="#1-系统设计" class="headerlink" title="1. 系统设计"></a>1. 系统设计</h5><ol>
+<li><p>基于区块链的设备身份认证</p>
+<ol>
+<li><p>区块链系统架构</p>
+<ul>
+<li>组成：IIoT设备、边缘服务器和云服务器组成的区块网络。</li>
+<li>物联网设备节点不承担数据计算工作，我们让现有的云服务器作为创建节点。</li>
+<li>共识算法：Ripple算法</li>
+<li><p>当一个节点发起申请时，验证节点将验证该节点的身份，如果验证通过则签名。当整个区块链系统的签名数不低于当前区块链系统汇总数的51%时，当前区块链系统认为该节点已通过区块链系统的审核。否则这个请求将被丢弃。</p>
+</li>
+<li><p>交易：包括设备类型、数据内容、数据、数据生成时间、处理节点和处理节点签名</p>
+</li>
+</ul>
+</li>
+<li><p>身份验证过程</p>
+<ul>
+<li>IIoT设备认证方案：集中式密钥分发改进方案，其主要功能是数字证书的颁发和管理。</li>
+<li>利用云服务器作为密钥分发中心，通过协商机制对密钥进行分发和管理。</li>
+<li>举例：注册<ol>
+<li>首先，物联网设备向云服务器申请注册</li>
+<li>云服务器通过共识机制检查物联网设备的身份</li>
+<li>审批通过后，云服务器将生成包含当前设备公钥的数字证书，并将其记录到自己的账簿中。</li>
+<li>然后云服务器将设备的信息发送到区块链中的其他节点。</li>
+<li>其他节点只需要验证证书的有效性，就可以知道当前记录的有效性。</li>
+<li>验证后，其他节点将记录在各自的账簿中</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>边缘计算</p>
+<ul>
+<li><p>目的：解决IIoT中计算能力的不足的问题</p>
+</li>
+<li><p>过程：</p>
+<ol>
+<li><p>当需要训练时，设备将自己的<strong>数据</strong>和自己的<strong>设备编号</strong>  <strong>分批上传</strong> 到每个厂内配备的边缘服务器。</p>
+</li>
+<li><p>边缘服务器使用Quicksort对所有数据进行<strong>排序</strong>，对排序后的数据进行<strong>比较</strong>，并<strong>删除重复的数据</strong>。</p>
+</li>
+<li><p>在边缘服务器对设备传输的数据进行<strong>训练</strong>后，边缘服务器将把当前工厂中<strong>同类型设备</strong>的模型<strong>合并为一个模型进行训练</strong>。</p>
+<ul>
+<li><p>边缘计算设备位于工厂内网中，以确保数据的隐私和安全</p>
+</li>
+<li><p>对工厂内同类型设备的模型进行合并更新后，可以大大减少对公共网络带宽的占用，提高联邦学习的效率。</p>
+</li>
+</ul>
+</li>
+<li><p>最后，合并后的训练模型被<strong>上传到云服务器</strong>，云服务器返回的模型被<strong>分发到各设备</strong>。</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>联邦迁移学习模型</p>
+<ul>
+<li>无监督领域自适应训练的过程通常分为两部分：预训练和微调。<ol>
+<li>首先，在源域对特征提取器和分类器进行预训练</li>
+<li>然后，源域将特征提取器的权重发送给目标域，并为两者之间的合作微调阶段做准备。</li>
+<li>在微调阶段，每批数据的处理可以分为四个步骤：前馈、分类损失函数和梯度计算、MMD损失函数和梯度计算、模型参数更新。</li>
+</ol>
+</li>
+</ul>
+<p><img src="https://gitee.com/serein-set/pic/raw/master/20210720202324.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+</ol>
+<h5 id="2-实验部分"><a href="#2-实验部分" class="headerlink" title="2. 实验部分"></a>2. 实验部分</h5><ul>
+<li><p>实验目的：验证区块链认证系统的安全性、联邦学习的准确性和迁移学习的准确性</p>
+<ol>
+<li><p>基于区块链的设备身份认证实验</p>
+<ol>
+<li><p>网络流量测试</p>
+<ul>
+<li>目的：测试该协议与未经认证的无线接入点之间的网络流量的差异，从而测量协议造成的网络流量压力的增加</li>
+<li>测试方法：使用 iftop 对网络流量进行测试，将直接发送到区块链的查询请求与本协议认证的请求流量进行比较，不断改变每秒查询次数（QPS），计算出网络流量利用率。</li>
+<li>为了及时响应请求，更准确地测量对网络的影响，随机选择的服务节点的数量为1，在这种情况下，不需要运行共识协议。</li>
+</ul>
+<p><img src="https://gitee.com/serein-set/pic/raw/master/20210720210513.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>结论：该方案对网络流量的影响为千分之一，对程序网络性能的影响可以忽略不计</li>
+</ul>
+</li>
+<li><p>安全分析</p>
+<ul>
+<li><strong>伪装攻击测试</strong>：使用与用户地址不匹配的私钥对数据包进行签名，然后发送到无线接入点。接入点成功丢弃报文</li>
+<li><strong>伪造攻击测试</strong>：对于中间人和未经认证的攻击，该解决方案依靠数字签名技术，在所有阶段都能有效防止。由于攻击者不能通过共识认证，他不能加入区块链，更不用说创建请求交易了。</li>
+<li><strong>重放攻击测试</strong>：同一个数据包被发送到无线接入点两次，无线接入点只向区块链发出一次请求。</li>
+<li><strong>拒绝服务攻击</strong>：本文提出的算法可以保证用户和无线接入点不能操纵参与协商验证的节点，从而保证验证流量不能集中在少数节点上，并在一定程度上限制拒绝服务攻击</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<ol>
+<li><p>联邦学习的实验</p>
+<ul>
+<li><p>数据集：KDD99数据集</p>
+</li>
+<li><p>实验设置：四个终端和一个云服务器，每个终端有10%的随机抽取的KDD99数据，保证了四个终端存储的数据基本不同</p>
+</li>
+<li>对照试验：本文算法与CSE、GRAE和FedAvg进行比较</li>
+</ul>
+<p><img src="https://gitee.com/serein-set/pic/raw/master/20210720212655.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>结论：<ul>
+<li>对于KDD99数据集：本文提出的联邦学习方法在所有学习类型中表现最好。这主要是由于一般集中学习方法不能很好地更新模型，受限于有限的训练数据集，不能产生良好的效果。另一方面，标准联邦学习方法在本文描述的环境中受到设备有限计算能力的限制，可能会对模型产生负面影响，影响模型的准确性</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://gitee.com/serein-set/pic/raw/master/20210720213828.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>结论：<ul>
+<li>本文提出的联合学习算法比其他算法具有更高的准确率。验证了低计算功率设备在工业物联网中参与联邦学习的可行性</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>迁移学习实验</p>
+<ul>
+<li>数据集：KDD99数据集</li>
+<li>实验设置：每个设备设置了不同的数据集。将10%的KDD99数据集划分为五个部分:Normal、DOS、Probe、R2L和U2R，并将它们放在不同的节点上。</li>
+</ul>
+<p><img src="https://gitee.com/serein-set/pic/raw/master/20210720214332.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>结论：本文提出的算法取得了较好的迁移学习准确率</li>
+</ul>
+</li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Federated-Transfer-Learning/">Federated Transfer Learning</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Edge-computing/">Edge computing</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Blockchain/">Blockchain</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/07/19/PaperList-02/">
+                        <span class="hidden-mobile">FedHealth:A Federated Transfer Learning Framework for Wearable Healthcare</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":200,"height":350},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
