@@ -238,6 +238,7 @@
             <div class="markdown-body">
               <p>提出了基于边缘计算的FL优化算法，以解决移动设备执行FedAvg时计算成本大的问题</p>
 <span id="more"></span>
+
 <h4 id="研究主题"><a href="#研究主题" class="headerlink" title="研究主题"></a><code>研究主题</code></h4><ul>
 <li><strong>DOI：10.1109/ACCESS.2020.3038287</strong></li>
 </ul>
@@ -254,14 +255,14 @@
 </li>
 </ul>
 <h5 id="2-关键技术"><a href="#2-关键技术" class="headerlink" title="2. 关键技术"></a>2. 关键技术</h5><ul>
-<li>合作式本地更新算法—解决移动设备的高计算成本问题</li>
+<li>合作式本地更新算法–解决移动设备的高计算成本问题</li>
 <li>全局聚合算法</li>
 </ul>
 <h5 id="3-创新点"><a href="#3-创新点" class="headerlink" title="3. 创新点"></a>3. 创新点</h5><p>以往的分层FL的工作更多地关注于各种移动设备与边缘服务器之间的交互，而在本文提出的EdgeFed中，模型训练的过程被分为两部分。在移动设备中学习低层模型参数，在边缘服务器中学习高层模型参数，并研究关键参数的后续影响。</p>
 <h5 id="4-相关问题"><a href="#4-相关问题" class="headerlink" title="4. 相关问题"></a>4. 相关问题</h5><ol>
 <li>怎样确定训练多少轮后边缘服务器和中央服务器进行参数共享？</li>
 </ol>
-<h4 id="研究方法"><a href="#研究方法" class="headerlink" title="研究方法"></a><code>研究方法</code></h4><h5 id="1-系统架构"><a href="#1-系统架构" class="headerlink" title="1. 系统架构"></a>1. 系统架构</h5><p><img src="https://gitee.com/serein-set/pic/raw/master/20210723132955.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="研究方法"><a href="#研究方法" class="headerlink" title="研究方法"></a><code>研究方法</code></h4><h5 id="1-系统架构"><a href="#1-系统架构" class="headerlink" title="1. 系统架构"></a>1. 系统架构</h5><p><img src="https://gitee.com/serein-set/pic/raw/master/20210723132955.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li><p>优化算法的每次迭代</p>
 <ul>
@@ -283,23 +284,23 @@
 </li>
 </ul>
 <h5 id="2-关键算法"><a href="#2-关键算法" class="headerlink" title="2. 关键算法"></a>2. 关键算法</h5><ol>
-<li><p>协作式本地更新算法—边缘服务器</p>
+<li><p>协作式本地更新算法–边缘服务器</p>
 <ul>
 <li>解决移动设备的高计算成本问题：获得初始模型参数后，在边缘服务器和移动设备之间进行</li>
 </ul>
-<p><img src="https://gitee.com/serein-set/pic/raw/master/20210723142212.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://gitee.com/serein-set/pic/raw/master/20210723142212.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li>如算法1第17-24行所示，在获取初始模型参数后，移动设备将开始将本地数据划分为若干固定大小的批次，进行SGD。在每批处理中，移动设备底层的输出和相应的数据标签将被传输到边缘服务器进行聚合。在合作局部更新过程中，每批更新的过程都需要移动设备与边缘服务器进行通信。</li>
 </ul>
 </li>
-<li><p>全局聚合算法—中心服务器</p>
-<p><img src="https://gitee.com/serein-set/pic/raw/master/20210723142324.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<li><p>全局聚合算法–中心服务器</p>
+<p><img src="https://gitee.com/serein-set/pic/raw/master/20210723142324.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li>在一次全局聚合的迭代之后，中央服务器需要确定是否有必要继续进行FL。云数据中心的测试数据集可用于测试模型。如果表现理想，那么就不需要开始下一次迭代，以避免可能的过度拟合和额外的计算；而如果表现不能满足标准，中心服务器就可以重复整个过程，将模型参数分配给边缘服务器进行下一轮。</li>
 </ul>
 </li>
 <li><p>移动设备与边缘服务器之间所需的本地通信次数分析</p>
-<p><img src="https://gitee.com/serein-set/pic/raw/master/20210723144746.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://gitee.com/serein-set/pic/raw/master/20210723144746.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li>Dk：移动设备k中的本地数据量。sbatch：批大小。tbatch：通信次数</li>
 <li>分析<ul>
@@ -311,7 +312,7 @@
 </ul>
 </li>
 <li><p>移动设备与边缘服务器之间本地所需的总通信次数分析</p>
-<p><img src="https://gitee.com/serein-set/pic/raw/master/20210723150114.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://gitee.com/serein-set/pic/raw/master/20210723150114.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li>E：本地轮数</li>
 <li>当E过大时，本地通信次数总数会增加。有必要权衡E和sbatch的值。根据实际应用，我们可以在可接受的tlocal的前提下，尽可能合理地减少sbatch，增加E，以便更好更快地训练模型</li>
@@ -323,12 +324,12 @@
 </li>
 <li><p>客户端的数据集是non-IID的</p>
 </li>
-<li><p>随机梯度下降法—SGD</p>
+<li><p>随机梯度下降法–SGD</p>
 </li>
 <li><p>假设：每个边缘服务器授权相同数量的客户端具有相同数量的训练数据</p>
 </li>
-<li><p>学习模型—CNN</p>
-<p><img src="https://gitee.com/serein-set/pic/raw/master/20210723152434.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<li><p>学习模型–CNN</p>
+<p><img src="https://gitee.com/serein-set/pic/raw/master/20210723152434.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li>两个卷积层Conv：分别有32和64个大小为5×5的过滤器。</li>
 <li>激活函数：Relu</li>
@@ -338,7 +339,8 @@
 </li>
 <li><p><strong>FedAvg</strong></p>
 <ul>
-<li>设备数量100个客户端和1个中心服务器</li>
+<li><p>设备数量100个客户端和1个中心服务器</p>
+</li>
 <li><p>在一次迭代中，从中心服务器下载初始模型参数后，100个移动设备在本地训练模型，每个移动设备将本地更新的模型参数同步发送到中心服务器进行全局聚合</p>
 </li>
 <li><p>首先将所有的训练数据按照每张图片的标签进行有序排序，然后将60000张图片分成200块，随机分配给每个客户端2块</p>
@@ -353,7 +355,8 @@
 </li>
 <li><p>每个批次的训练过程从移动设备对低层的计算开始，输出结果将被发送到相应的边缘服务器进行汇总并计算后续层，然后将边缘服务器中更新的模型参数返回给移动设备用于下一批次。在移动设备和边缘服务器之间完成多次协作的本地更新后，每个边缘服务器将本地参数发送到中心服务器进行全局聚合，这里是一个通信回合的结束。</p>
 </li>
-<li>为每个边缘服务器随机选择6000张图片，并根据标签进行有序排序，然后将它们分成20块，每个被分配的客户端得到2块。因此，每个移动设备有600个训练数据，其中只有部分类别的标签</li>
+<li><p>为每个边缘服务器随机选择6000张图片，并根据标签进行有序排序，然后将它们分成20块，每个被分配的客户端得到2块。因此，每个移动设备有600个训练数据，其中只有部分类别的标签</p>
+</li>
 </ul>
 </li>
 </ul>
@@ -361,8 +364,8 @@
 <li><p>影响因素：<strong>batch size</strong>和<strong>epochs</strong>影响 训练效率 和 移动设备的计算成本。</p>
 </li>
 <li><p><strong>FedAvg和EdgeFed的准确性和训练损失比较</strong></p>
-<p><img src="https://gitee.com/serein-set/pic/raw/master/20210723153848.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="https://gitee.com/serein-set/pic/raw/master/20210723155200.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://gitee.com/serein-set/pic/raw/master/20210723153848.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/serein-set/pic/raw/master/20210723155200.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li><p>结论</p>
 <ul>
@@ -384,9 +387,9 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://gitee.com/serein-set/pic/raw/master/20210723155616.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="https://gitee.com/serein-set/pic/raw/master/20210723160104.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="https://gitee.com/serein-set/pic/raw/master/20210723161609.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://gitee.com/serein-set/pic/raw/master/20210723155616.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/serein-set/pic/raw/master/20210723160104.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/serein-set/pic/raw/master/20210723161609.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li>结论<ul>
 <li>如果目标是最小化总通信成本，我们应该根据不同的带宽条件，通过调整sbatch和E来仔细平衡batch size和epochs。</li>
@@ -406,9 +409,9 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/Edge-computing/">Edge computing</a>
-                    
                       <a class="hover-with-bg" href="/tags/Federated-learning/">Federated learning</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Edge-computing/">Edge computing</a>
                     
                       <a class="hover-with-bg" href="/tags/Deep-learning/">Deep learning</a>
                     
