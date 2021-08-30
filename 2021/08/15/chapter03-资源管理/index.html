@@ -247,13 +247,12 @@
 <li>当然，如果Pod中程序的数据需要持久化，kubernetes还提供了各种<code>存储</code>系统。</li>
 </ul>
 </blockquote>
-<p><img src="https://gitee.com/serein-set/pic/raw/master/20210813111805.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/serein-set/pic/raw/master/20210813111805.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <blockquote>
 <p>学习kubernetes的核心，就是学习如何对集群上的<code>Pod、Pod控制器、Service、存储</code>等各种资源进行操作</p>
 </blockquote>
 <h3 id="3-2-YAML语法介绍"><a href="#3-2-YAML语法介绍" class="headerlink" title="3.2 YAML语法介绍"></a>3.2 YAML语法介绍</h3><ul>
-<li><p>YAML是一个类似 XML、JSON 的标记性语言。它强调以<strong>数据</strong>为中心，并不是以标识语言为重点。因而YAML本身的定义比较简单，号称”一种人性化的数据格式语言”。</p>
-</li>
+<li>YAML是一个类似 XML、JSON 的标记性语言。它强调以<strong>数据</strong>为中心，并不是以标识语言为重点。因而YAML本身的定义比较简单，号称”一种人性化的数据格式语言”。</li>
 <li><p>YAML的语法比较简单，主要有下面几个：</p>
 <ul>
 <li>大小写敏感</li>
@@ -270,10 +269,9 @@
 <li>数组：一组按次序排列的值，又称为序列（sequence） / 列表（list）</li>
 </ul>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># 纯量, 就是指的一个简单的值，字符串、布尔值、整数、浮点数、Null、时间、日期</span><br><span class="hljs-comment"># 1 布尔类型</span><br><span class="hljs-attr">c1:</span> <span class="hljs-literal">true</span> <span class="hljs-string">(或者True)</span><br><span class="hljs-comment"># 2 整型</span><br><span class="hljs-attr">c2:</span> <span class="hljs-number">234</span><br><span class="hljs-comment"># 3 浮点型</span><br><span class="hljs-attr">c3:</span> <span class="hljs-number">3.14</span><br><span class="hljs-comment"># 4 null类型 </span><br><span class="hljs-attr">c4:</span> <span class="hljs-string">~</span>  <span class="hljs-comment"># 使用~表示null</span><br><span class="hljs-comment"># 5 日期类型</span><br><span class="hljs-attr">c5:</span> <span class="hljs-number">2018-02-17</span>    <span class="hljs-comment"># 日期必须使用ISO 8601格式，即yyyy-MM-dd</span><br><span class="hljs-comment"># 6 时间类型</span><br><span class="hljs-attr">c6:</span> <span class="hljs-number">2018-02-17T15:02:31+08:00</span>  <span class="hljs-comment"># 时间使用ISO 8601格式，时间和日期之间使用T连接，最后使用+代表时区</span><br><span class="hljs-comment"># 7 字符串类型</span><br><span class="hljs-attr">c7:</span> <span class="hljs-string">heima</span>     <span class="hljs-comment"># 简单写法，直接写值 , 如果字符串中间有特殊字符，必须使用双引号或者单引号包裹 </span><br><span class="hljs-attr">c8:</span> <span class="hljs-string">line1</span><br>    <span class="hljs-string">line2</span>     <span class="hljs-comment"># 字符串过多的情况可以拆成多行，每一行会被转化成一个空格</span><br></code></pre></td></tr></table></figure>
-
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># 对象</span><br><span class="hljs-comment"># 形式一(推荐):</span><br><span class="hljs-attr">heima:</span><br>  <span class="hljs-attr">age:</span> <span class="hljs-number">15</span><br>  <span class="hljs-attr">address:</span> <span class="hljs-string">Beijing</span><br><span class="hljs-comment"># 形式二(了解):</span><br><span class="hljs-attr">heima:</span> &#123;<span class="hljs-attr">age:</span> <span class="hljs-number">15</span>,<span class="hljs-attr">address:</span> <span class="hljs-string">Beijing</span>&#125;<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># 数组</span><br><span class="hljs-comment"># 形式一(推荐):</span><br><span class="hljs-attr">address:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">顺义</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">昌平</span>  <br><span class="hljs-comment"># 形式二(了解):</span><br><span class="hljs-attr">address:</span> [<span class="hljs-string">顺义</span>,<span class="hljs-string">昌平</span>]<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-comment"># 数组</span><br><span class="hljs-comment"># 形式一(推荐):</span><br><span class="hljs-attr">address:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">顺义</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-string">昌平</span>  <br><span class="hljs-comment"># 形式二(了解):</span><br><span class="hljs-attr">address:</span> [<span class="hljs-string">顺义</span>,<span class="hljs-string">昌平</span>]<br></code></pre></td></tr></table></figure>
+</li>
 </ul>
 <blockquote>
 <p>小提示：</p>
@@ -293,65 +291,73 @@
 <p><code>kubectl apply -f nginx-pod.yaml</code>     （apply只应用创建和更新资源，不能删除资源）</p>
 </li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
-<th align="center">类型</th>
-<th align="center">操作对象</th>
-<th align="center">适用环境</th>
-<th align="center">优点</th>
-<th align="center">缺点</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">操作对象</th>
+<th style="text-align:center">适用环境</th>
+<th style="text-align:center">优点</th>
+<th style="text-align:center">缺点</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">命令式对象管理</td>
-<td align="center">对象</td>
-<td align="center">测试</td>
-<td align="center">简单</td>
-<td align="center">只能操作活动对象，无法审计、跟踪</td>
+<tbody>
+<tr>
+<td style="text-align:center">命令式对象管理</td>
+<td style="text-align:center">对象</td>
+<td style="text-align:center">测试</td>
+<td style="text-align:center">简单</td>
+<td style="text-align:center">只能操作活动对象，无法审计、跟踪</td>
 </tr>
 <tr>
-<td align="center">命令式对象配置</td>
-<td align="center">文件</td>
-<td align="center">开发</td>
-<td align="center">可以审计、跟踪</td>
-<td align="center">项目大时，配置文件多，操作麻烦</td>
+<td style="text-align:center">命令式对象配置</td>
+<td style="text-align:center">文件</td>
+<td style="text-align:center">开发</td>
+<td style="text-align:center">可以审计、跟踪</td>
+<td style="text-align:center">项目大时，配置文件多，操作麻烦</td>
 </tr>
 <tr>
-<td align="center">声明式对象配置</td>
-<td align="center">目录</td>
-<td align="center">开发</td>
-<td align="center">支持目录操作</td>
-<td align="center">意外情况下难以调试</td>
+<td style="text-align:center">声明式对象配置</td>
+<td style="text-align:center">目录</td>
+<td style="text-align:center">开发</td>
+<td style="text-align:center">支持目录操作</td>
+<td style="text-align:center">意外情况下难以调试</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h4 id="3-4-1-命令式对象管理"><a href="#3-4-1-命令式对象管理" class="headerlink" title="3.4.1 命令式对象管理"></a>3.4.1 命令式对象管理</h4><ul>
 <li><p><strong>kubectl命令</strong></p>
 <ul>
 <li><p>kubectl是kubernetes集群的命令行工具，通过它能够对集群本身进行管理，并能够在集群上进行容器化应用的安装部署。kubectl命令的语法如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> kubectl [<span class="hljs-built_in">command</span>] [<span class="hljs-built_in">type</span>] [name] [flags]</span><br>- comand：指定要对资源执行的操作，例如create、get、delete<br>- type：指定资源类型，比如deployment、pod、service<br>- name：指定资源的名称，名称大小写敏感<br>- flags：指定额外的可选参数<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 查看所有pod</span><br>kubectl get pod <br><span class="hljs-meta">#</span><span class="bash"> 查看某个pod</span><br>kubectl get pod pod_name<br><span class="hljs-meta">#</span><span class="bash"> 查看某个pod,以yaml格式展示结果</span><br>kubectl get pod pod_name -o yaml<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> kubectl [<span class="hljs-built_in">command</span>] [<span class="hljs-built_in">type</span>] [name] [flags]</span><br>- comand：指定要对资源执行的操作，例如create、get、delete<br>- type：指定资源类型，比如deployment、pod、service<br>- name：指定资源的名称，名称大小写敏感<br>- flags：指定额外的可选参数<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 查看所有pod</span><br>kubectl get pod <br><span class="hljs-meta">#</span><span class="bash"> 查看某个pod</span><br>kubectl get pod pod_name<br><span class="hljs-meta">#</span><span class="bash"> 查看某个pod,以yaml格式展示结果</span><br>kubectl get pod pod_name -o yaml<br></code></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
 <li><p><strong>资源类型</strong></p>
 <ul>
 <li><p>kubernetes中所有的内容都抽象为资源，可以通过下面的命令进行查看:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> kubectl api-resources</span><br></code></pre></td></tr></table></figure></li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> kubectl api-resources</span><br></code></pre></td></tr></table></figure>
+</li>
 <li><p>经常使用的资源有下面这些：</p>
-<p><img src="https://gitee.com/serein-set/pic/raw/master/20210813152938.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/serein-set/pic/raw/master/20210813152938.png" srcset="/img/loading.gif" lazyload alt=""></p>
 </li>
 </ul>
 </li>
 <li><p><strong>操作</strong></p>
 <ul>
-<li><p>kubernetes允许对资源进行多种操作，可以通过–help查看详细的操作命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> kubectl --<span class="hljs-built_in">help</span></span><br></code></pre></td></tr></table></figure></li>
+<li><p>kubernetes允许对资源进行多种操作，可以通过—help查看详细的操作命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> kubectl --<span class="hljs-built_in">help</span></span><br></code></pre></td></tr></table></figure>
+</li>
 <li><p>经常使用的操作有下面这些:</p>
-<p><img src="https://gitee.com/serein-set/pic/raw/master/20210813153640.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/serein-set/pic/raw/master/20210813153640.png" srcset="/img/loading.gif" lazyload alt=""></p>
 </li>
 </ul>
 </li>
-<li><p><strong>示例</strong>–以一个namespace / pod的创建和删除简单演示下命令的使用</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 创建一个namespace</span><br>[root@master ~]# kubectl create namespace dev<br>namespace/dev created<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 获取namespace</span><br>[root@master ~]# kubectl get ns<br>NAME              STATUS   AGE<br>default           Active   21h<br>dev               Active   21s # 除了dev 其余都是集群自带的<br>kube-node-lease   Active   21h<br>kube-public       Active   21h<br>kube-system       Active   21h<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 在此namespace下创建并运行一个nginx的Pod</span><br>[root@master ~]# kubectl run pod --image=nginx:latest -n dev<br>kubectl run --generator=deployment/apps.v1 is DEPRECATED and will be removed in a future version. Use kubectl run --generator=run-pod/v1 or kubectl create instead.<br>deployment.apps/pod created<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 查看新创建的pod</span><br>[root@master ~]# kubectl get pod -n dev<br>NAME  READY   STATUS    RESTARTS   AGE<br>pod   1/1     Running   0          21s<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 删除指定的pod</span><br>[root@master ~]# kubectl delete pod pod-864f9875b9-pcw7x <br>pod &quot;pod&quot; deleted<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 删除指定的namespace</span><br>[root@master ~]# kubectl delete ns dev<br>namespace &quot;dev&quot; deleted<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>示例</strong>—以一个namespace / pod的创建和删除简单演示下命令的使用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 创建一个namespace</span><br>[root@master ~]# kubectl create namespace dev<br>namespace/dev created<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 获取namespace</span><br>[root@master ~]# kubectl get ns<br>NAME              STATUS   AGE<br>default           Active   21h<br>dev               Active   21s # 除了dev 其余都是集群自带的<br>kube-node-lease   Active   21h<br>kube-public       Active   21h<br>kube-system       Active   21h<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 在此namespace下创建并运行一个nginx的Pod</span><br>[root@master ~]# kubectl run pod --image=nginx:latest -n dev<br>kubectl run --generator=deployment/apps.v1 is DEPRECATED and will be removed in a future version. Use kubectl run --generator=run-pod/v1 or kubectl create instead.<br>deployment.apps/pod created<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 查看新创建的pod</span><br>[root@master ~]# kubectl get pod -n dev<br>NAME  READY   STATUS    RESTARTS   AGE<br>pod   1/1     Running   0          21s<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 删除指定的pod</span><br>[root@master ~]# kubectl delete pod pod-864f9875b9-pcw7x <br>pod &quot;pod&quot; deleted<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 删除指定的namespace</span><br>[root@master ~]# kubectl delete ns dev<br>namespace &quot;dev&quot; deleted<br></code></pre></td></tr></table></figure>
+</li>
 </ul>
 <h4 id="3-4-2-命令式对象配置"><a href="#3-4-2-命令式对象配置" class="headerlink" title="3.4.2 命令式对象配置"></a>3.4.2 命令式对象配置</h4><ul>
 <li>命令式对象配置就是使用命令配合配置文件一起来操作kubernetes资源。</li>
@@ -359,33 +365,34 @@
 <ol>
 <li><p>创建一个nginxpod.yaml，内容如下</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@master ~]# vim nginxpod.yaml<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">v1</span><br><span class="hljs-attr">kind:</span> <span class="hljs-string">Namespace</span><br><span class="hljs-attr">metadata:</span><br>  <span class="hljs-attr">name:</span> <span class="hljs-string">dev</span><br><br><span class="hljs-meta">---</span><br><span class="hljs-meta"></span><br><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">v1</span><br><span class="hljs-attr">kind:</span> <span class="hljs-string">Pod</span><br><span class="hljs-attr">metadata:</span><br>  <span class="hljs-attr">name:</span> <span class="hljs-string">nginxpod</span> <span class="hljs-comment"># dev命名空间下的Pod的名称</span><br>  <span class="hljs-attr">namespace:</span> <span class="hljs-string">dev</span> <span class="hljs-comment"># Pod所在命名空间叫dev</span><br><span class="hljs-attr">spec:</span><br>  <span class="hljs-attr">containers:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">nginx-containers</span> <span class="hljs-comment"># Pod里的容器名称</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">nginx:latest</span>	   <span class="hljs-comment"># 容器使用的镜像</span><br></code></pre></td></tr></table></figure></li>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">v1</span><br><span class="hljs-attr">kind:</span> <span class="hljs-string">Namespace</span><br><span class="hljs-attr">metadata:</span><br>  <span class="hljs-attr">name:</span> <span class="hljs-string">dev</span><br><br><span class="hljs-meta">---</span><br><span class="hljs-meta"></span><br><span class="hljs-attr">apiVersion:</span> <span class="hljs-string">v1</span><br><span class="hljs-attr">kind:</span> <span class="hljs-string">Pod</span><br><span class="hljs-attr">metadata:</span><br>  <span class="hljs-attr">name:</span> <span class="hljs-string">nginxpod</span> <span class="hljs-comment"># dev命名空间下的Pod的名称</span><br>  <span class="hljs-attr">namespace:</span> <span class="hljs-string">dev</span> <span class="hljs-comment"># Pod所在命名空间叫dev</span><br><span class="hljs-attr">spec:</span><br>  <span class="hljs-attr">containers:</span><br>  <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">nginx-containers</span> <span class="hljs-comment"># Pod里的容器名称</span><br>    <span class="hljs-attr">image:</span> <span class="hljs-string">nginx:latest</span>	   <span class="hljs-comment"># 容器使用的镜像</span><br></code></pre></td></tr></table></figure>
+</li>
 <li><p>执行create命令，创建资源</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@master ~]# kubectl create -f nginxpod.yaml<br>namespace/dev created<br>pod/nginxpod created<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 此时发现创建了两个资源对象，分别是namespace和pod</span><br></code></pre></td></tr></table></figure></li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@master ~]# kubectl create -f nginxpod.yaml<br>namespace/dev created<br>pod/nginxpod created<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 此时发现创建了两个资源对象，分别是namespace和pod</span><br></code></pre></td></tr></table></figure>
+</li>
 <li><p>执行get命令，查看资源</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@master ~]#  kubectl get ns dev<br>NAME            STATUS   AGE<br>namespace/dev   Active   18s<br><br>[root@master ~]#  kubectl get pod -n dev<br>NAME            READY   STATUS    RESTARTS   AGE<br>nginxpod    1/1     Running   0          17s<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@master ~]#  kubectl get ns dev<br>NAME            STATUS   AGE<br>namespace/dev   Active   18s<br><br>[root@master ~]#  kubectl get pod -n dev<br>NAME            READY   STATUS    RESTARTS   AGE<br>nginxpod    1/1     Running   0          17s<br></code></pre></td></tr></table></figure>
+</li>
 <li><p>执行delete命令，删除资源</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@master ~]# kubectl delete -f nginxpod.yaml<br>namespace &quot;dev&quot; deleted<br>pod &quot;nginxpod&quot; deleted<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs shell">[root@master ~]# kubectl delete -f nginxpod.yaml<br>namespace &quot;dev&quot; deleted<br>pod &quot;nginxpod&quot; deleted<br></code></pre></td></tr></table></figure>
+</li>
 </ol>
 <blockquote>
 <p>总结:<br>命令式对象配置的方式操作资源，可以简单的认为：命令  +  yaml配置文件（里面是命令需要的各种参数）</p>
 </blockquote>
 <h4 id="3-4-3-声明式对象配置"><a href="#3-4-3-声明式对象配置" class="headerlink" title="3.4.3 声明式对象配置"></a>3.4.3 声明式对象配置</h4><ul>
 <li><p>声明式对象配置跟命令式对象配置很相似，但是它只有一个命令apply</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 首先执行一次kubectl apply -f yaml文件，发现创建了资源</span><br>[root@master ~]#  kubectl apply -f nginxpod.yaml<br>namespace/dev created<br>pod/nginxpod created<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 再次执行一次kubectl apply -f yaml文件，发现说资源没有变动</span><br>[root@master ~]#  kubectl apply -f nginxpod.yaml<br>namespace/dev unchanged<br>pod/nginxpod unchanged<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 首先执行一次kubectl apply -f yaml文件，发现创建了资源</span><br>[root@master ~]#  kubectl apply -f nginxpod.yaml<br>namespace/dev created<br>pod/nginxpod created<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 再次执行一次kubectl apply -f yaml文件，发现说资源没有变动</span><br>[root@master ~]#  kubectl apply -f nginxpod.yaml<br>namespace/dev unchanged<br>pod/nginxpod unchanged<br></code></pre></td></tr></table></figure>
+</li>
 </ul>
 <blockquote>
 <p>总结:<br>   其实声明式对象配置就是使用apply描述一个资源最终的状态（在yaml中定义状态）<br>   使用apply操作资源：<br>        如果资源不存在，就创建，相当于 kubectl create<br>        如果资源已存在，就更新，相当于 kubectl patch</p>
-</blockquote>
-<blockquote>
 <p>扩展：kubectl可以在node节点上运行吗 ?</p>
 <ul>
 <li><p>kubectl的运行是需要进行配置的，它的配置文件是$HOME/.kube，如果想要在node节点运行此命令，需要将master上的.kube文件复制到node节点上，即在master节点上执行下面操作：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> scp  -r  HOME/.kube   node1: HOME/</span><br></code></pre></td></tr></table></figure></li>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">$</span><span class="bash"> scp  -r  HOME/.kube   node1: HOME/</span><br></code></pre></td></tr></table></figure>
+</li>
 </ul>
-</blockquote>
-<blockquote>
 <p>使用推荐: 三种方式应该怎么用 ?</p>
 <ul>
 <li><p>创建/更新资源 使用声明式对象配置 kubectl apply -f XXX.yaml</p>

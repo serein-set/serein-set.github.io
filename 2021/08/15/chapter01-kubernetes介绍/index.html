@@ -267,9 +267,9 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://gitee.com/serein-set/pic/raw/master/20210806144025.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/serein-set/pic/raw/master/20210806144025.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
-<li><p>容器化部署方式存在的问题–容器编排问题–<strong>为什么需要容器调度平台</strong></p>
+<li><p>容器化部署方式存在的问题—容器编排问题—<strong>为什么需要容器调度平台</strong></p>
 <blockquote>
 <ul>
 <li>有了容器，开发人员就只需要考虑如何恰当地扩展、部署，以及管理他们新开发的应用程序。但如果我们大规模地使用容器，就不得不考虑容器调度、部署、跨多节点访问、自动伸缩等问题</li>
@@ -277,46 +277,7 @@
 </blockquote>
 </li>
 <li><p>一个容器调度系统需要什么</p>
-<table>
-<thead>
-<tr>
-<th align="center">能力</th>
-<th align="center">解释</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">调度</td>
-<td align="center">自动生成容器实例</td>
-</tr>
-<tr>
-<td align="center">亲和/反亲和</td>
-<td align="center">生成的容器可以相邻或者相隔，帮助提高可用性和性能</td>
-</tr>
-<tr>
-<td align="center">健康检查</td>
-<td align="center">自动监测容器的健康状态</td>
-</tr>
-<tr>
-<td align="center">容错</td>
-<td align="center">自动在健康的节点上重新生成容器实例</td>
-</tr>
-<tr>
-<td align="center">可扩展</td>
-<td align="center">自动根据需要增加或者删除容器实例</td>
-</tr>
-<tr>
-<td align="center">网络</td>
-<td align="center">允许容器之间互相通信</td>
-</tr>
-<tr>
-<td align="center">服务发现</td>
-<td align="center">允许容器之间互相发现</td>
-</tr>
-<tr>
-<td align="center">滚动升级</td>
-<td align="center">容器升级可以避免对业务造成影响，同时出错回滚</td>
-</tr>
-</tbody></table>
+<p>|    能力     |                       解释                       |<br>| :————-: | :———————————————————————: |<br>|    调度     |                 自动生成容器实例                 |<br>| 亲和/反亲和 | 生成的容器可以相邻或者相隔，帮助提高可用性和性能 |<br>|  健康检查   |              自动监测容器的健康状态              |<br>|    容错     |        自动在健康的节点上重新生成容器实例        |<br>|   可扩展    |         自动根据需要增加或者删除容器实例         |<br>|    网络     |               允许容器之间互相通信               |<br>|  服务发现   |               允许容器之间互相发现               |<br>|  滚动升级   |   容器升级可以避免对业务造成影响，同时出错回滚   |</p>
 </li>
 <li><p>为了解决上述 容器编排问题，产生了一些容器编排引擎工具（容器管理调度平台）</p>
 <ul>
@@ -326,9 +287,9 @@
 </ul>
 </li>
 </ul>
-<p><img src="https://gitee.com/serein-set/pic/raw/master/20210806144259.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="1-2-kubernetes简介"><a href="#1-2-kubernetes简介" class="headerlink" title="1.2 kubernetes简介"></a>1.2 kubernetes简介</h3><p><img src="https://gitee.com/serein-set/pic/raw/master/20210806144331.png" srcset="/img/loading.gif" lazyload></p>
-<p>kubernetes，是一个全新的基于容器技术的分布式架构领先方案，是谷歌严格保密十几年的秘密武器—-Borg系统的一个开源版本，于2014年9月发布第一个版本，2015年7月发布第一个正式版本。</p>
+<p><img src="https://gitee.com/serein-set/pic/raw/master/20210806144259.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-2-kubernetes简介"><a href="#1-2-kubernetes简介" class="headerlink" title="1.2 kubernetes简介"></a>1.2 kubernetes简介</h3><p><img src="https://gitee.com/serein-set/pic/raw/master/20210806144331.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>kubernetes，是一个全新的基于容器技术的分布式架构领先方案，是谷歌严格保密十几年的秘密武器——Borg系统的一个开源版本，于2014年9月发布第一个版本，2015年7月发布第一个正式版本。</p>
 <p>kubernetes的本质是<strong>一组服务器集群</strong>，它可以在集群的每个节点上运行特定的程序，来对节点中的容器进行管理。目的是实现资源管理的自动化，主要提供了如下的主要功能：</p>
 <ul>
 <li><strong>自我修复</strong>：一旦某一个容器崩溃，能够在1秒中左右迅速启动新的容器</li>
@@ -338,8 +299,8 @@
 <li><strong>版本回退</strong>：如果发现新发布的程序版本有问题，可以立即回退到原来的版本</li>
 <li><strong>存储编排</strong>：可以根据容器自身的需求自动创建存储卷</li>
 </ul>
-<p><img src="https://gitee.com/serein-set/pic/raw/master/20210806145053.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="1-3-kubernetes组件"><a href="#1-3-kubernetes组件" class="headerlink" title="1.3 kubernetes组件"></a>1.3 kubernetes组件</h3><p>一个kubernetes集群主要是由<strong>控制节点(Master)<strong>、</strong>工作节点( Node)<strong>、</strong>Addons</strong>构成，每个节点上都会安装不同的组件</p>
+<p><img src="https://gitee.com/serein-set/pic/raw/master/20210806145053.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="1-3-kubernetes组件"><a href="#1-3-kubernetes组件" class="headerlink" title="1.3 kubernetes组件"></a>1.3 kubernetes组件</h3><p>一个kubernetes集群主要是由<strong>控制节点(Master)</strong>、<strong>工作节点( Node)</strong>、<strong>Addons</strong>构成，每个节点上都会安装不同的组件</p>
 <ul>
 <li><p><strong>Master：集群的控制平面，负责集群的决策 ( 管理 )</strong></p>
 <blockquote>
@@ -359,9 +320,9 @@
 <li><p><strong>Addons</strong>：Addons 使用 Kubernetes 资源（DaemonSet、Deployment等）实现集群的功能特性。由于他们提供集群级别的功能特性，addons使用到的Kubernetes资源都放置在 <code>kube-system</code> 名称空间下。</p>
 </li>
 </ul>
-<p><img src="https://gitee.com/serein-set/pic/raw/master/20210806150333.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/serein-set/pic/raw/master/20210806150333.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
-<li><p>kubernetes系统各个组件调用关系–示例：部署一个Nginx服务</p>
+<li><p>kubernetes系统各个组件调用关系—示例：部署一个Nginx服务</p>
 <ol>
 <li><p>首先，kubernetes环境启动，master和node组件都会将自身的信息存储到Etcd数据库中</p>
 </li>
@@ -396,7 +357,7 @@
 <li>匹配 labels 的 Pod IP 和端口列表组成 endpoints，由 kube-proxy 负责将服务 IP 负载均衡到这些 endpoints 上。</li>
 <li>每个 Service 都会自动分配一个 cluster IP（仅在集群内部可访问的虚拟地址）和 DNS 名，其他容器可以通过该地址或 DNS 来访问服务，而不需要了解后端容器的运行。</li>
 </ul>
-<p><img src="https://gitee.com/serein-set/pic/raw/master/20210806153103.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/serein-set/pic/raw/master/20210806153103.png" srcset="/img/loading.gif" lazyload alt=""></p>
 </li>
 <li><p><strong>Label</strong>：Label 是识别 Kubernetes 对象的标签，以 key/value 的方式附加到对象上。标签，用于对pod进行分类，同一类pod会拥有相同的标签。</p>
 </li>
