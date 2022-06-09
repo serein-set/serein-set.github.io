@@ -16,7 +16,7 @@
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="热爱生活，记录学习点滴">
   <meta name="author" content="Serein">
-  <meta name="keywords" content="Go，Python，Blockchain, Edge computing，IoT">
+  <meta name="keywords" content="Data Analysis，Python，Federated Learning，">
   
   <title>SereinDemo</title>
 
@@ -37,10 +37,16 @@
 
 <!-- 自定义样式保持在最底部 -->
 
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/scroll.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/gradient.css">
+
+
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -182,81 +188,16 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/08/15/chapter01-kubernetes%E4%BB%8B%E7%BB%8D/" target="_self">
-          Kubernetes学习笔记01||Kubernetes介绍
+        <a href="/2021/08/15/chapter04-%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8/" target="_self">
+          Kubernetes学习笔记04||实战入门
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/08/15/chapter01-kubernetes%E4%BB%8B%E7%BB%8D/" target="_self">
+        <a href="/2021/08/15/chapter04-%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8/" target="_self">
           
           
-            
           
-          Chapter01 || Kubernetes介绍1.1 应用部署方式演变
-部署应用程序的变化
-
-传统部署：互联网早期，会直接将应用程序部署在物理机上
-
-优点：简单，不需要其它技术的参与
-缺点：不能为应用程序定义资源使用边界，很难合理地分配计算资源，而且程序之间容易产生影响
-
-
-虚拟化部署：可以在一台物理机上运行多个虚拟机，每个虚拟机都是独立的一个环境
-
-优点：程序环境不会相互产生影响，提供了一定
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-08-15 00:00" pubdate>
-              2021-08-15
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Kubernetes/">Kubernetes</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/08/15/chapter02-kubernetes%E9%9B%86%E7%BE%A4%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" target="_self">
-          Kubernetes学习笔记02||Kubernetes集群搭建
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/08/15/chapter02-kubernetes%E9%9B%86%E7%BE%A4%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" target="_self">
-          
-          
-            
-          
-          Chapter02 || 集群环境搭建–一主两从集群2.1 环境规划2.1.1 集群类型
-目前Kubernetes集群大体上分为两类：一主多从 和 多主多从
-一主多从：一台Master节点和多台Node节点。搭建简单，但是有单机故障风险，适合于测试环境。
-多主多从：多台Master节点和多台Node节点。搭建复杂，安全性高，适合于生产环境。
-
-
-
-
-2.1.2 安装方式
-Kubernetes 集群
         </a>
       </p>
 
@@ -297,15 +238,7 @@ Kubernetes 集群
         <a href="/2021/08/15/chapter03-%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/" target="_self">
           
           
-            
           
-          Chapter03 || 资源管理3.1 资源管理介绍
-在kubernetes中，所有的内容都抽象为资源，用户需要通过操作资源来管理kubernetes。
-
-
-
-kubernetes的本质上就是一个集群系统，用户可以在集群中部署各种服务，所谓的部署服务，其实就是在kubernetes集群中运行一个个的容器，并将指定的程序跑在容器中。
-kubernetes的最小管理单元是pod而不是容器，所以只能将
         </a>
       </p>
 
@@ -337,24 +270,16 @@ kubernetes的最小管理单元是pod而不是容器，所以只能将
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/08/15/chapter04-%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8/" target="_self">
-          Kubernetes学习笔记04||实战入门
+        <a href="/2021/08/15/chapter02-kubernetes%E9%9B%86%E7%BE%A4%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" target="_self">
+          Kubernetes学习笔记02||Kubernetes集群搭建
         </a>
       </h1>
 
       <p class="index-excerpt">
-        <a href="/2021/08/15/chapter04-%E5%AE%9E%E6%88%98%E5%85%A5%E9%97%A8/" target="_self">
+        <a href="/2021/08/15/chapter02-kubernetes%E9%9B%86%E7%BE%A4%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" target="_self">
           
           
-            
           
-          Chapter04 || 实战入门
-本章节将介绍如何在kubernetes集群中部署一个nginx服务，并且能够对其进行访问
-
-4.1 Namespace
-Namespace是kubernetes系统中的一种非常重要资源，它的主要作用是用来实现多套环境的资源隔离或者多租户的资源隔离。
-
-多套环境的资源隔离：默认情况下，kubernetes集群中的所有的Pod都是可以相互访问的。但是在实际中，可能不
         </a>
       </p>
 
@@ -373,6 +298,133 @@ Namespace是kubernetes系统中的一种非常重要资源，它的主要作用�
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/Kubernetes/">Kubernetes</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/08/15/chapter01-kubernetes%E4%BB%8B%E7%BB%8D/" target="_self">
+          Kubernetes学习笔记01||Kubernetes介绍
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/08/15/chapter01-kubernetes%E4%BB%8B%E7%BB%8D/" target="_self">
+          
+          
+          
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-08-15 00:00" pubdate>
+              2021-08-15
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Kubernetes/">Kubernetes</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/20/PaperList-03/" target="_self">
+          Federated Transfer Learning for IIoT Devices With Low Computing Power Based on Blockchain and Edge Computing
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/20/PaperList-03/" target="_self">
+          
+          
+          
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-20 00:00" pubdate>
+              2021-07-20
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Federated-Transfer-Learning/">Federated Transfer Learning</a>
+            
+              <a href="/tags/Edge-computing/">Edge computing</a>
+            
+              <a href="/tags/Blockchain/">Blockchain</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/07/19/PaperList-02/" target="_self">
+          FedHealth:A Federated Transfer Learning Framework for Wearable Healthcare
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/07/19/PaperList-02/" target="_self">
+          
+          
+          
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-07-19 00:00" pubdate>
+              2021-07-19
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Federated-Transfer-Learning/">Federated Transfer Learning</a>
             
           </div>
         
@@ -415,135 +467,11 @@ Namespace是kubernetes系统中的一种非常重要资源，它的主要作用�
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
+              <a href="/tags/Edge-computing/">Edge computing</a>
+            
               <a href="/tags/Federated-learning/">Federated learning</a>
             
-              <a href="/tags/Edge-computing/">Edge computing</a>
-            
               <a href="/tags/Deep-learning/">Deep learning</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/07/20/PaperList-03/" target="_self">
-          Federated Transfer Learning for IIoT Devices With Low Computing Power Based on Blockchain and Edge Computing
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/07/20/PaperList-03/" target="_self">
-          
-          
-            
-          
-          
-
-研究主题
-DOI：10.1109/ACCESS.2021.3095078
-
-1. 研究主题
-需要解决的问题：针对工业物联网设备太低而无法完成联邦学习中模型更新任务的问题。
-
-创新点
-
-针对许多计算能力低下的设备不适合在IIoT中进行联合学习的问题，本文提出了一种将低计算能力设备的数据提交给工厂内网的边缘计算服务器进行训练的策略。
-针对数据传输过程中存在的数据安全问题，本文采用区块链来保护数据的
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-20 00:00" pubdate>
-              2021-07-20
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Edge-computing/">Edge computing</a>
-            
-              <a href="/tags/Federated-Transfer-Learning/">Federated Transfer Learning</a>
-            
-              <a href="/tags/Blockchain/">Blockchain</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/07/19/PaperList-02/" target="_self">
-          FedHealth:A Federated Transfer Learning Framework for Wearable Healthcare
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/07/19/PaperList-02/" target="_self">
-          
-          
-            
-          
-          
-
-研究主题
-DOI：10.1109/MIS.2020.2988604
-
-1. 研究主题
-为了解决数据孤岛和个性化模型训练问题，提出了一个联邦迁移学习框架FedHealth用于可穿戴医疗保健。
-
-创新点
-
-
-第一个将联邦迁移学习用于可穿戴健康的工作
-
-保障隐私安全的情况下聚合数据
-
-实现相对个性化的模型学习
-
-
-
-
-2. 关键技术
-联邦学习–解决数据孤岛问题
-迁移学习–解决个性化模型学习问题
-其他
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-19 00:00" pubdate>
-              2021-07-19
-            </time>
-          </div>
-        
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/Federated-Transfer-Learning/">Federated Transfer Learning</a>
             
           </div>
         
@@ -642,7 +570,7 @@ DOI：10.1109/MIS.2020.2988604
 
   <footer class="text-center mt-5 py-3">
   <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
   </div>
   
   <div class="statistics">
@@ -749,6 +677,25 @@ DOI：10.1109/MIS.2020.2988604
 
 
 
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/DynamicLine.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/snowflake.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/love.min.js"></script>
 
 
 
